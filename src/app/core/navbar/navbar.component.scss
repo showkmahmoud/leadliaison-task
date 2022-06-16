@@ -1,0 +1,15 @@
+.navbar {
+  background: rgb(21, 105, 193);
+  background: linear-gradient(
+    90deg,
+    rgba(21, 105, 193, 1) 0%,
+    rgba(27, 93, 204, 1) 47%,
+    rgba(35, 194, 218, 1) 86%
+  );
+  padding: 15px;
+  color: var(--logo-color);
+}
+
+.logo-header {
+  margin: 0;
+}

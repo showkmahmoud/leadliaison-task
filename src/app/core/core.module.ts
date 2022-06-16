@@ -5,15 +5,9 @@ import { CoreRoutingModule } from './core-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 
-
 @NgModule({
-  declarations: [
-    NavbarComponent,
-    SideMenuComponent
-  ],
-  imports: [
-    CommonModule,
-    CoreRoutingModule
-  ]
+  declarations: [NavbarComponent, SideMenuComponent],
+  imports: [CommonModule, CoreRoutingModule],
+  exports: [NavbarComponent, SideMenuComponent],
 })
-export class CoreModule { }
+export class CoreModule {}
