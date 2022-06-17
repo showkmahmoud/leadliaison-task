@@ -1,4 +1,4 @@
-export interface ProductData {
+export interface Product {
   category: string;
   id: number;
   imageUrl: string;

@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Product } from '../pages/models/product';
 
 @Injectable({
   providedIn: 'root',
@@ -7,10 +9,10 @@ import { Injectable } from '@angular/core';
 export class ProductsService {
   private productsUrl = 'https://captello.firebaseio.com/products.json';
   constructor(private httpClient: HttpClient) {}
-  getProducts() {
+  getProducts(): Observable<any> {
     return this.httpClient.get(this.productsUrl);
   }
-  getProduct(id: number) {
+  getProduct(id: number): Observable<any> {
     return this.httpClient.get(
       `https://captello.firebaseio.com/products/${id}.json`
     );

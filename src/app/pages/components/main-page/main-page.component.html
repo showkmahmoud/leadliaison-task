@@ -3,10 +3,16 @@
 
   <div class="main-content row">
     <div class="side-menu" *ngIf="menuOpen">
-      <app-side-menu [header]="mainHeader"></app-side-menu>
+      <app-side-menu
+        [header]="mainHeader"
+        (dataFiltered)="filter($event)"
+      ></app-side-menu>
     </div>
     <div class="product-list" [ngClass]="{ 'menu-open': menuOpen }">
-      <app-products-list [header]="mainHeader"></app-products-list>
+      <app-products-list
+        [header]="mainHeader"
+        [products]="filteredProducts"
+      ></app-products-list>
     </div>
   </div>
 </div>
