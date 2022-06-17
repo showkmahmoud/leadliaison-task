@@ -5,6 +5,7 @@
     <div class="side-menu" *ngIf="menuOpen">
       <app-side-menu
         [header]="mainHeader"
+        [status]="status"
         (dataFiltered)="filter($event)"
       ></app-side-menu>
     </div>
