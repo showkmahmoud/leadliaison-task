@@ -1,5 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { CATEGORIES } from 'src/app/pages/models/enums';
+import {
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
+import { CATEGORIES, FILTERED_LIST } from 'src/app/pages/models/enums';
 import { Product } from 'src/app/pages/models/product';
 
 @Component({
@@ -12,19 +19,19 @@ export class SideMenuComponent implements OnInit {
   @Input() products!: Product[];
   @Output() dataFiltered: EventEmitter<CATEGORIES> = new EventEmitter();
 
-  sideMenuItems: CATEGORIES[] = [
-    CATEGORIES.all,
-    CATEGORIES.simpleTools,
-    CATEGORIES.complexTools,
+  sideMenuItems: any[] = [
+    { name: FILTERED_LIST.all, value: CATEGORIES.all },
+    { name: FILTERED_LIST.simpleTools, value: CATEGORIES.simple },
+    { name: FILTERED_LIST.complexTools, value: CATEGORIES.complex },
   ];
-  selectedItem: CATEGORIES = CATEGORIES.all;
-  constructor() {}
 
-  ngOnInit(): void {
-    this.onFilter(this.selectedItem);
-  }
+  selectedItem: CATEGORIES = CATEGORIES.all;
+  constructor(private changeDetector: ChangeDetectorRef) {}
+
+  ngOnInit(): void {}
   onFilter(item: CATEGORIES) {
     this.selectedItem = item;
     this.dataFiltered.emit(this.selectedItem);
+    this.changeDetector.detectChanges();
   }
 }

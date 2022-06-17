@@ -2,11 +2,11 @@
   <h4 class="header">{{ header }}</h4>
   <ul class="list">
     <li
-      (click)="onFilter(item)"
+      (click)="onFilter(item.value)"
       *ngFor="let item of sideMenuItems"
-      [ngClass]="{ active: selectedItem === item }"
+      [ngClass]="{ active: selectedItem === item.value }"
     >
-      {{ item }}
+      {{ item.name }}
     </li>
   </ul>
 </div>

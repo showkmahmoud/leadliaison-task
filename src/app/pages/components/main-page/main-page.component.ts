@@ -13,19 +13,19 @@ export class MainPageComponent implements OnInit {
   menuOpen: boolean = true;
   products!: Product[];
   filteredProducts: Product[] = [];
-  constructor(private productsService: ProductsService) {}
-
-  ngOnInit(): void {
+  constructor(private productsService: ProductsService) {
     this.getApiData();
   }
+
+  ngOnInit(): void {}
   filter(category: CATEGORIES) {
     if (category === CATEGORIES.all) {
       this.filteredProducts = this.products;
-    } else if (category === CATEGORIES.simpleTools) {
+    } else if (category === CATEGORIES.simple) {
       this.filteredProducts = this.products.filter(
         (product) => product.category === category
       );
-    } else if (category === CATEGORIES.complexTools) {
+    } else if (category === CATEGORIES.complex) {
       this.filteredProducts = this.products.filter(
         (product) => product.category === category
       );
@@ -34,10 +34,11 @@ export class MainPageComponent implements OnInit {
   getApiData() {
     this.productsService.getProducts().subscribe((result) => {
       this.products = result;
+      console.log(this.products);
+      this.filter(CATEGORIES.all);
     });
   }
   toggleMenu(value: boolean) {
     this.menuOpen = value;
-    console.log(value);
   }
 }
