@@ -14,6 +14,8 @@
         <app-products-list
           [header]="mainHeader"
           [products]="filteredProducts"
+          (syncProductsList)="onListSynced()"
+          (syncProduct)="onProductSynced($event)"
         ></app-products-list>
       </div>
     </div>

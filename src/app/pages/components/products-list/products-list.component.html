@@ -4,9 +4,15 @@
     <span class="btn primary-btn" (click)="onSyncProductsList()">Sync</span>
   </div>
   <div class="row justify-center align-items products-list-wrapper">
-    <div *ngFor="let product of products" class="product-card">
+    <a
+      *ngFor="let product of products"
+      class="product-card"
+      [routerLink]="['product/' + product.id]"
+    >
       <div class="img-btn-wrapper">
-        <span class="btn secondary-btn" (click)="onSyncProduct()">Sync</span>
+        <span class="btn secondary-btn" (click)="onSyncProduct(product.id)"
+          >Sync</span
+        >
         <img
           [src]="
             product.imageUrl
@@ -22,6 +28,6 @@
           {{ product.price ? (product.price | currency) : "No data avaliable" }}
         </p>
       </div>
-    </div>
+    </a>
   </div>
 </div>

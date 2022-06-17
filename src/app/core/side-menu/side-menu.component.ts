@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { PRODUCTS } from 'src/app/pages/components/main-page/main-page.component';
 import { CATEGORIES, FILTERED_LIST } from 'src/app/pages/models/enums';
 import { Product } from 'src/app/pages/models/product';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-side-menu',
@@ -23,18 +25,46 @@ export class SideMenuComponent implements OnInit {
     [FILTERED_LIST.complexTools]: CATEGORIES.complex,
   };
   selectedItem: CATEGORIES = CATEGORIES.all;
-  itemsNo: number = 0;
-  constructor() {}
+  itemsNo: number[] = [];
+  constructor(private productsService: ProductsService) {}
 
   ngOnInit(): void {
     if (this.status) {
       this.onFilter(this.status);
     }
+    this.getProducts();
   }
+
   getProducts() {
-    this.products.filter((product) => {
-      if (product.category === this.test[FILTERED_LIST.all]) {
-        this.itemsNo = this.products.length;
+    if (localStorage.getItem(PRODUCTS)) {
+      this.products = JSON.parse(localStorage.getItem(PRODUCTS) as string);
+      this.getProductsNumber();
+    } else {
+      this.getApiData();
+    }
+  }
+  getApiData() {
+    this.productsService.getProducts().subscribe((result) => {
+      localStorage.setItem(PRODUCTS, JSON.stringify(result));
+      this.products = result;
+      this.getProductsNumber();
+    });
+  }
+  getProductsNumber() {
+    console.log(this.products);
+    this.products.filter((product): any => {
+      for (let i = 0; i < this.sideMenuItems.length; i++) {
+        if (
+          product.category !== this.test[FILTERED_LIST.complexTools] ||
+          product.category !== this.test[FILTERED_LIST.simpleTools]
+        ) {
+          this.itemsNo[i] = this.products.length;
+        } else if (product.category === this.test[FILTERED_LIST.complexTools]) {
+          let number: number = 0;
+          number += number;
+          this.itemsNo[i] = number;
+          console.log(this.itemsNo[i]);
+        }
       }
     });
   }

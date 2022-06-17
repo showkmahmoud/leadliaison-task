@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
 import { CATEGORIES } from '../../models/enums';
 import { Product } from '../../models/product';
-
+export const PRODUCTS = 'PRODUCTS';
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
@@ -17,7 +17,7 @@ export class MainPageComponent implements OnInit {
   constructor(private productsService: ProductsService) {}
 
   ngOnInit(): void {
-    this.getApiData();
+    this.getProducts();
   }
   filter(category: CATEGORIES) {
     if (category === CATEGORIES.all) {
@@ -35,12 +35,36 @@ export class MainPageComponent implements OnInit {
       this.status = CATEGORIES.complex;
     }
   }
+  getProducts() {
+    if (localStorage.getItem(PRODUCTS)) {
+      this.products = JSON.parse(localStorage.getItem(PRODUCTS) as string);
+      this.filter(this.status ? this.status : CATEGORIES.all);
+    } else {
+      this.getApiData();
+    }
+  }
   getApiData() {
     this.productsService.getProducts().subscribe((result) => {
+      localStorage.setItem(PRODUCTS, JSON.stringify(result));
       this.products = result;
-      console.log(this.products);
-      this.filter(CATEGORIES.all);
+      this.filter(this.status ? this.status : CATEGORIES.all);
     });
+  }
+  onListSynced() {
+    this.getApiData();
+  }
+  onProductSynced(id: number) {
+    console.log(id);
+    this.productsService.getProduct(id).subscribe((result) => {
+      console.log(result);
+      this.onProductUpdate(result);
+    });
+  }
+  onProductUpdate(product: Product) {
+    let newList = this.products.filter((item) => item.id !== product.id);
+    newList.push(product);
+    localStorage.setItem(PRODUCTS, JSON.stringify(newList));
+    this.products = newList;
   }
   toggleMenu(value: boolean) {
     this.menuOpen = value;

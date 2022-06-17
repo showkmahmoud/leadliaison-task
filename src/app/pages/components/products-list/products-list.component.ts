@@ -1,5 +1,4 @@
-import { ProductsService } from './../../../services/products.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from '../../models/product';
 
 @Component({
@@ -10,10 +9,16 @@ import { Product } from '../../models/product';
 export class ProductsListComponent implements OnInit {
   @Input() header!: string;
   @Input() products!: Product[];
+  @Output() syncProductsList: EventEmitter<boolean> = new EventEmitter();
+  @Output() syncProduct: EventEmitter<number> = new EventEmitter();
 
   constructor() {}
 
   ngOnInit(): void {}
-  onSyncProductsList() {}
-  onSyncProduct() {}
+  onSyncProductsList() {
+    this.syncProductsList.emit(true);
+  }
+  onSyncProduct(id: number) {
+    this.syncProduct.emit(id);
+  }
 }

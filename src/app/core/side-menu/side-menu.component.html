@@ -3,10 +3,10 @@
   <ul class="list">
     <li
       (click)="onFilter(item.value)"
-      *ngFor="let item of sideMenuItems"
+      *ngFor="let item of sideMenuItems; let itemIndex = index"
       [ngClass]="{ active: selectedItem === item.value }"
     >
-      {{ item.name }} ({{ itemsNo }})
+      {{ item.name }} ({{ itemsNo[itemIndex] }})
     </li>
   </ul>
 </div>
