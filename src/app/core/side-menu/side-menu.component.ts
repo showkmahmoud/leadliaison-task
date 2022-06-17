@@ -51,7 +51,6 @@ export class SideMenuComponent implements OnInit {
     });
   }
   getProductsNumber() {
-    console.log(this.products);
     this.products.filter((product): any => {
       for (let i = 0; i < this.sideMenuItems.length; i++) {
         if (
@@ -63,7 +62,6 @@ export class SideMenuComponent implements OnInit {
           let number: number = 0;
           number += number;
           this.itemsNo[i] = number;
-          console.log(this.itemsNo[i]);
         }
       }
     });

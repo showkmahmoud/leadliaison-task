@@ -15,6 +15,5 @@ export class NavbarComponent implements OnInit {
   onOpenMenu() {
     this.sideMenuOpen = !this.sideMenuOpen;
     this.menuOpened.emit(this.sideMenuOpen);
-    console.log('fired');
   }
 }

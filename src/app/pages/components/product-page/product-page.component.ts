@@ -1,4 +1,6 @@
+import { Product } from './../../models/product';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProductsService } from 'src/app/services/products.service';
 import { PRODUCTS } from '../main-page/main-page.component';
 
@@ -8,13 +10,19 @@ import { PRODUCTS } from '../main-page/main-page.component';
   styleUrls: ['./product-page.component.scss'],
 })
 export class ProductPageComponent implements OnInit {
-  constructor(private productsService: ProductsService) {}
+  productId!: string;
+  product!: Product | undefined;
+  constructor(private route: Router) {}
 
-  ngOnInit(): void {}
-  getProduct(id: number) {
-    this.productsService.getProduct(id).subscribe((result) => {
-      console.log(result);
-    });
+  ngOnInit(): void {
+    const url = this.route.url;
+    this.productId = url.split('/')[3];
+    this.getProduct();
+  }
+  getProduct() {
     const products = JSON.parse(localStorage.getItem(PRODUCTS) as string);
+    this.product = products.find(
+      (item: Product) => item.id === Number(this.productId)
+    );
   }
 }

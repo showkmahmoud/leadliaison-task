@@ -54,17 +54,19 @@ export class MainPageComponent implements OnInit {
     this.getApiData();
   }
   onProductSynced(id: number) {
-    console.log(id);
     this.productsService.getProduct(id).subscribe((result) => {
-      console.log(result);
       this.onProductUpdate(result);
     });
   }
   onProductUpdate(product: Product) {
-    let newList = this.products.filter((item) => item.id !== product.id);
-    newList.push(product);
-    localStorage.setItem(PRODUCTS, JSON.stringify(newList));
-    this.products = newList;
+    if (product) {
+      let newList = this.products.filter((item) => item.id !== product.id);
+      newList.push(product);
+      localStorage.setItem(PRODUCTS, JSON.stringify(newList));
+      this.products = newList;
+    } else {
+      console.error('the product not found');
+    }
   }
   toggleMenu(value: boolean) {
     this.menuOpen = value;

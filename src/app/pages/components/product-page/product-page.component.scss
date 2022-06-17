@@ -1,0 +1,43 @@
+.product-page-wrapper {
+  margin-top: 30px;
+}
+.product-info {
+  width: 45%;
+  padding: 20px;
+}
+.card-name::after {
+  content: "";
+  display: block;
+  background-color: var(--main-color);
+  height: 3px;
+  width: 80px;
+  margin-top: 10px;
+}
+.img-wrapper {
+  width: 40%;
+  overflow: hidden;
+  transition: 0.5s ease-out;
+  cursor: pointer;
+}
+.img-wrapper:hover img {
+  transform: scale(1.5);
+}
+img {
+  width: 100%;
+  transition: 0.5s ease-out;
+}
+
+.card-price {
+  margin-top: 20px;
+  color: var(--p-color);
+}
+
+@media (max-width: 47.9375em) {
+  .product-info {
+    width: 100%;
+  }
+  .img-wrapper {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}

@@ -1,1 +1,20 @@
-<p>product-page works!</p>
+<div class="container product-page-wrapper">
+  <div class="row justify-space-between align-start">
+    <div class="img-wrapper">
+      <img
+        [src]="
+          product?.imageUrl
+            ? product?.imageUrl
+            : 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png'
+        "
+        alt=""
+      />
+    </div>
+    <div class="product-info">
+      <h2 class="card-name">{{ product?.name }}</h2>
+      <p class="card-price">
+        {{ product?.price ? (product?.price | currency) : "No data avaliable" }}
+      </p>
+    </div>
+  </div>
+</div>
