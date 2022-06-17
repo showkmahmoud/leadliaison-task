@@ -2,7 +2,7 @@
 /*   global  */
 :root {
   --main-color: #23c2da;
-  --bg-color: #f4f9fb;
+  --bg-color: #ecf8fc;
   --header-color: #000;
   --p-color: grey;
   --main-bg: #fff;
@@ -32,14 +32,20 @@ img {
 }
 .row {
   display: flex;
+  flex-wrap: wrap;
 }
 .align-items {
   align-items: center;
 }
+.align-start {
+  align-items: flex-start;
+}
 .justify-space-between {
   justify-content: space-between;
 }
-
+.justify-center {
+  justify-content: center;
+}
 ul {
   list-style: none;
 }
@@ -63,20 +69,21 @@ a {
   text-align: center;
   border: 1px solid transparent;
   color: #eee;
-  margin: 15px;
   font-size: 1.2rem;
-  transition: 0.5s;
+  transition: 0.2s;
+  border-radius: 5px;
+  cursor: pointer;
 }
 .primary-btn {
   background: #ffc400;
-  padding: 10px 20px;
+  padding: 10px 50px;
 }
 .secondary-btn {
   background: #24c5dc;
-  padding: 10px 5px;
+  padding: 5px 20px;
 }
 .btn:hover {
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 5px rgba(92, 92, 92, 0.5);
 }
 .normal-radius {
   border-radius: 5px;

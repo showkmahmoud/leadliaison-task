@@ -10,10 +10,12 @@
       ></app-side-menu>
     </div>
     <div class="product-list" [ngClass]="{ 'menu-open': menuOpen }">
-      <app-products-list
-        [header]="mainHeader"
-        [products]="filteredProducts"
-      ></app-products-list>
+      <div class="scrollbar">
+        <app-products-list
+          [header]="mainHeader"
+          [products]="filteredProducts"
+        ></app-products-list>
+      </div>
     </div>
   </div>
 </div>

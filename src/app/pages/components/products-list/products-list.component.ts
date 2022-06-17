@@ -14,4 +14,6 @@ export class ProductsListComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+  onSyncProductsList() {}
+  onSyncProduct() {}
 }

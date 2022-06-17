@@ -1,8 +1,25 @@
 <div class="container">
-  <h2>{{ header }}</h2>
-  <div class="products-list-wrapper">
+  <div class="row align-start justify-space-between">
+    <h2 class="header">{{ header }}</h2>
+    <span class="btn primary-btn" (click)="onSyncProductsList()">Sync</span>
+  </div>
+  <div class="row justify-center align-items products-list-wrapper">
     <div *ngFor="let product of products" class="product-card">
-      {{ product.name }}
+      <div class="img-btn-wrapper">
+        <span class="btn secondary-btn" (click)="onSyncProduct()">Sync</span>
+        <img
+          [src]="
+            product.imageUrl
+              ? product.imageUrl
+              : 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png'
+          "
+          alt=""
+        />
+      </div>
+      <div class="card-info">
+        <p class="card-name">{{ product.name }}</p>
+        <p class="card-price">{{ product.price }}</p>
+      </div>
     </div>
   </div>
 </div>
