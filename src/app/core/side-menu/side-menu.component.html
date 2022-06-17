@@ -6,7 +6,7 @@
       *ngFor="let item of sideMenuItems"
       [ngClass]="{ active: selectedItem === item.value }"
     >
-      {{ item.name }}
+      {{ item.name }} ({{ itemsNo }})
     </li>
   </ul>
 </div>

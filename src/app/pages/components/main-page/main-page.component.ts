@@ -14,11 +14,11 @@ export class MainPageComponent implements OnInit {
   products!: Product[];
   filteredProducts: Product[] = [];
   status!: CATEGORIES;
-  constructor(private productsService: ProductsService) {
+  constructor(private productsService: ProductsService) {}
+
+  ngOnInit(): void {
     this.getApiData();
   }
-
-  ngOnInit(): void {}
   filter(category: CATEGORIES) {
     if (category === CATEGORIES.all) {
       this.filteredProducts = this.products;

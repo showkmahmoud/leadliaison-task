@@ -18,7 +18,9 @@
       </div>
       <div class="card-info">
         <p class="card-name">{{ product.name }}</p>
-        <p class="card-price">{{ product.price }}</p>
+        <p class="card-price">
+          {{ product.price ? (product.price | currency) : "No data avaliable" }}
+        </p>
       </div>
     </div>
   </div>
