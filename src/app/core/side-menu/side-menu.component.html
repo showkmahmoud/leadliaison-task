@@ -1,2 +1,6 @@
-{{ header }}
-<div class="side-menu"></div>
+<div class="side-menu">
+  <h4>{{ header }}</h4>
+  <ul class="list">
+    <li *ngFor="let item of sideMenuItems">{{ item }}</li>
+  </ul>
+</div>

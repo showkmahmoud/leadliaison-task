@@ -8,6 +8,7 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class MainPageComponent implements OnInit {
   mainHeader: string = 'Products';
+  menuOpen: boolean = true;
   constructor(private productsService: ProductsService) {}
 
   ngOnInit(): void {
@@ -17,5 +18,9 @@ export class MainPageComponent implements OnInit {
     this.productsService.getProducts().subscribe((result) => {
       console.log(result);
     });
+  }
+  toggleMenu(value: boolean) {
+    this.menuOpen = value;
+    console.log(value);
   }
 }

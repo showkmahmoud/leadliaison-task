@@ -1,10 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 /*   global  */
 :root {
-  --main-color: #16a085;
+  --main-color: #23c2da;
   --bg-color: #f4f9fb;
   --header-color: #000;
   --p-color: grey;
+  --main-bg: #fff;
   --logo-color: #fff;
 }
 
@@ -54,7 +55,9 @@ a {
 .p-text {
   color: var(--p-color);
 }
-
+.active {
+  color: var(--main-color);
+}
 .primary-btn,
 .secondary-btn {
   text-align: center;
@@ -77,19 +80,4 @@ a {
 }
 .normal-radius {
   border-radius: 5px;
-}
-.section-title {
-  margin: 20px 0;
-}
-.section-title h2 {
-  text-align: left;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin-bottom: 20px;
 }

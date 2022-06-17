@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CATEGORIES } from 'src/app/pages/models/enums';
 
 @Component({
   selector: 'app-side-menu',
@@ -7,6 +8,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SideMenuComponent implements OnInit {
   @Input() header!: string;
+  sideMenuItems: CATEGORIES[] = [
+    CATEGORIES.all,
+    CATEGORIES.simpleTools,
+    CATEGORIES.complexTools,
+  ];
   constructor() {}
 
   ngOnInit(): void {}

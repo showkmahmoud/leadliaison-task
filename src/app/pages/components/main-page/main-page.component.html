@@ -1,9 +1,12 @@
-<app-navbar></app-navbar>
-<div class="row">
-  <div class="side-menu">
-    <app-side-menu [header]="mainHeader"></app-side-menu>
-  </div>
-  <div class="product-list">
-    <app-products-list [header]="mainHeader"></app-products-list>
+<div class="main-display">
+  <app-navbar (menuOpened)="toggleMenu($event)"></app-navbar>
+
+  <div class="main-content row">
+    <div class="side-menu" *ngIf="menuOpen">
+      <app-side-menu [header]="mainHeader"></app-side-menu>
+    </div>
+    <div class="product-list" [ngClass]="{ 'menu-open': menuOpen }">
+      <app-products-list [header]="mainHeader"></app-products-list>
+    </div>
   </div>
 </div>
