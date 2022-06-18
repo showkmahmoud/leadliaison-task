@@ -67,28 +67,24 @@ export class MainPageComponent implements OnInit {
       {
         name: FILTERED_LIST.simpleTools,
         value: CATEGORIES.simple,
-        number: this.getCategoryItems(CATEGORIES.simple),
+        number: this.getNumberOfCategory(CATEGORIES.simple),
       },
       {
         name: FILTERED_LIST.complexTools,
         value: CATEGORIES.complex,
-        number: this.getCategoryItems(CATEGORIES.complex),
+        number: this.getNumberOfCategory(CATEGORIES.complex),
       },
     ];
   }
 
-  getCategoryItems(category: string) {
-    if (category) {
-      let result = 0;
-      this.products.forEach((element) => {
-        if (element.category === category) {
-          result += 1;
-        }
-      });
-      return result;
-    } else {
-      return this.products.length;
-    }
+  getNumberOfCategory(category: string) {
+    let result = 0;
+    this.products.forEach((element) => {
+      if (element.category === category) {
+        result += 1;
+      }
+    });
+    return result;
   }
 
   onListSynced() {
