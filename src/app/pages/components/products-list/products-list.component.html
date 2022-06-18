@@ -4,16 +4,13 @@
     <span class="btn primary-btn" (click)="onSyncProductsList()">Sync</span>
   </div>
   <div class="row justify-center align-items products-list-wrapper">
-    <a
-      *ngFor="let product of products"
-      class="product-card"
-      [routerLink]="['product/' + product.id]"
-    >
+    <a *ngFor="let product of products" class="product-card">
       <div class="img-btn-wrapper">
         <span class="btn secondary-btn" (click)="onSyncProduct(product.id)"
           >Sync</span
         >
         <img
+          [routerLink]="['product/' + product.id]"
           [src]="
             product.imageUrl
               ? product.imageUrl

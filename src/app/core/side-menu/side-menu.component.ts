@@ -39,9 +39,10 @@ export class SideMenuComponent implements OnInit {
     if (localStorage.getItem(PRODUCTS)) {
       this.products = JSON.parse(localStorage.getItem(PRODUCTS) as string);
       this.getProductsNumber();
-    } else {
-      this.getApiData();
     }
+    // else {
+    //   this.getApiData();
+    // }
   }
   getApiData() {
     this.productsService.getProducts().subscribe((result) => {
@@ -50,22 +51,7 @@ export class SideMenuComponent implements OnInit {
       this.getProductsNumber();
     });
   }
-  getProductsNumber() {
-    this.products.filter((product): any => {
-      for (let i = 0; i < this.sideMenuItems.length; i++) {
-        if (
-          product.category !== this.test[FILTERED_LIST.complexTools] ||
-          product.category !== this.test[FILTERED_LIST.simpleTools]
-        ) {
-          this.itemsNo[i] = this.products.length;
-        } else if (product.category === this.test[FILTERED_LIST.complexTools]) {
-          let number: number = 0;
-          number += number;
-          this.itemsNo[i] = number;
-        }
-      }
-    });
-  }
+  getProductsNumber() {}
   onFilter(item: CATEGORIES) {
     this.selectedItem = item;
     this.dataFiltered.emit(this.selectedItem);
