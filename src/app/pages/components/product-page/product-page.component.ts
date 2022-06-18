@@ -12,6 +12,7 @@ import { PRODUCTS } from '../main-page/main-page.component';
 export class ProductPageComponent implements OnInit {
   productId!: string;
   product!: Product | undefined;
+  object = Object;
   constructor(private route: Router) {}
 
   ngOnInit(): void {
