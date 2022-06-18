@@ -27,3 +27,9 @@
    ng serve
    Runs the app in the development mode.
    Open http://localhost:4200 to view it in the browser.
+
+## Note
+
+there is a bug when I fetch the data
+when I send a request to get a product with id 1
+the result will be a product with id 2 and so on
